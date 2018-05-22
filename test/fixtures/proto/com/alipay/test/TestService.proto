@@ -1,0 +1,34 @@
+syntax = "proto3";
+package com.alipay.test_grpc;
+option java_package = "com.alipay.test_grpc";
+option java_outer_classname = "TestServiceModels";
+
+service TestService {
+    rpc echoObj (TestService_echoObj_Req) returns (TestService_echoObj_Res) {};
+    rpc echoList (TestService_echoList_Req) returns (TestService_echoList_Res) {};
+    rpc echoStr (TestService_echoStr_Req) returns (TestService_echoStr_Res) {};
+}
+
+message TestService_echoObj_Req {
+    com.alipay.test_grpc.TestObj arg0 = 1;
+}
+message TestService_echoObj_Res {
+    string exception = 1;
+    com.alipay.test_grpc.TestObj ret = 2;
+}
+message TestService_echoList_Req {
+    repeated com.alipay.test_grpc.TestObj arg0 = 1;
+}
+message TestService_echoList_Res {
+    string exception = 1;
+    repeated com.alipay.test_grpc.TestObj ret = 2;
+}
+message TestService_echoStr_Req {
+    string arg0 = 1;
+}
+message TestService_echoStr_Res {
+    string exception = 1;
+    string ret = 2;
+}
+
+// import "com/alipay/test/Models.proto";

@@ -1,0 +1,11 @@
+syntax = "proto3";
+package com.alipay.test.sub_grpc;
+option java_package = "com.alipay.test.sub_grpc";
+option java_outer_classname = "Models";
+
+message TestObj2 {
+    string name = 1;
+    string finalField = 2;
+    reserved 3;
+}
+
