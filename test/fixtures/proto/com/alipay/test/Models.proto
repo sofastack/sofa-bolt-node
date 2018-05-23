@@ -1,0 +1,27 @@
+syntax = "proto3";
+package com.alipay.test_grpc;
+option java_package = "com.alipay.test_grpc";
+option java_outer_classname = "Models";
+
+message TestObj {
+    string name1 = 1;
+    string Field2 = 2;
+    com.alipay.test.sub_grpc.TestObj2 testObj2 = 3;
+    bool bbb = 4;
+    string enum1 = 5;
+    bytes bs = 6;
+    repeated string list1 = 8;
+    repeated int32 list2 = 9;
+    repeated com.alipay.test.sub_grpc.TestObj2 list3 = 10;
+    repeated string list4 = 11;
+    repeated bytes list5 = 12;
+    map<int64, string> map1 = 13;
+    map<int32, int32> map2 = 14;
+    map<bool, com.alipay.test.sub_grpc.TestObj2> map3 = 15;
+    map<string, string> map4 = 16;
+    map<string, bytes> map5 = 17;
+    repeated string enum2 = 18;
+    reserved 7, 19, 20;
+}
+
+//import "com/alipay/test/sub/Models.proto";
