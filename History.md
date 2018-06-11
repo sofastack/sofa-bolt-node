@@ -1,4 +1,10 @@
 
+1.0.1 / 2018-06-11
+==================
+
+**fixes**
+  * [[`1a56a2f`](http://github.com/alipay/sofa-bolt-node/commit/1a56a2fcab52d713b9af6620359732fb2f72995c)] - fix: simple map serializer logic (#2) (zōng yǔ <<gxcsoccer@users.noreply.github.com>>)
+
 1.0.0 / 2018-05-23
 ==================
 
