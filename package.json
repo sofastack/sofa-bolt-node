@@ -7,7 +7,7 @@
     "lib"
   ],
   "scripts": {
-    "autod": "autod --registry=https://registry.npm.taobao.org",
+    "autod": "autod",
     "lint": "eslint . --ext .js",
     "cov": "TEST_TIMEOUT=10000 egg-bin cov",
     "test": "npm run lint && npm run test-local",
@@ -32,26 +32,25 @@
   },
   "homepage": "https://github.com/alipay/sofa-bolt-node#readme",
   "dependencies": {
-    "@protobufjs/codegen": "^2.0.4",
     "byte": "^2.0.0",
-    "crc": "^3.5.0",
-    "debug": "^3.1.0",
-    "hessian.js-1": "^1.8.2",
+    "crc": "^3.8.0",
+    "hessian.js-1": "^1.8.3",
     "is-type-of": "^1.2.0",
-    "utility": "^1.13.1"
+    "sofa-hessian-node": "^1.0.1",
+    "utility": "^1.14.0"
   },
   "devDependencies": {
     "antpb": "^1.0.0",
     "autod": "^3.0.1",
     "await-event": "^2.1.0",
     "contributors": "^0.5.1",
-    "egg-bin": "^4.7.0",
+    "egg-bin": "^4.7.1",
     "egg-ci": "^1.8.0",
-    "eslint": "^4.19.1",
+    "eslint": "^5.2.0",
     "eslint-config-egg": "^7.0.0",
     "js-to-java": "^2.5.0",
     "long": "^4.0.0",
-    "mm": "^2.2.0",
+    "mm": "^2.2.2",
     "mz-modules": "^2.1.0",
     "pump": "^3.0.0"
   },
