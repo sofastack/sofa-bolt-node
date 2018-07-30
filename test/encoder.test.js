@@ -119,7 +119,6 @@ describe('test/encoder.test.js', () => {
 
   [
     [ 'bolt - hessian2', 'bolt', 'hessian2', urlparse('bolt://127.0.0.1:12200?serialization=hessian2', true) ],
-    [ 'bolt - hessian', 'bolt', 'hessian', urlparse('bolt://127.0.0.1:12200?serialization=hessian', true) ],
   ].forEach(([ spec, protocolType, codecType, address ]) => {
     describe(spec, () => {
       it('should encode request', async function() {
