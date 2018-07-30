@@ -1,4 +1,10 @@
 
+1.0.2 / 2018-07-30
+==================
+
+**fixes**
+  * [[`fe00549`](http://github.com/alipay/sofa-bolt-node/commit/fe005493d9cbe733e226d5bebbf9144147d2b7ea)] - fix: bolt only support hessian2 (#4) (zōng yǔ <<gxcsoccer@users.noreply.github.com>>)
+
 1.0.1 / 2018-06-11
 ==================
 
