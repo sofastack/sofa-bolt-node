@@ -43,6 +43,7 @@
     "antpb": "^1.0.0",
     "autod": "^3.0.1",
     "await-event": "^2.1.0",
+    "benchmark": "^2.1.4",
     "contributors": "^0.5.1",
     "egg-bin": "^4.7.1",
     "egg-ci": "^1.8.0",
