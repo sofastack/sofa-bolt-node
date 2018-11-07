@@ -1,4 +1,10 @@
 
+1.1.0 / 2018-11-07
+==================
+
+**features**
+  * [[`ee70866`](http://github.com/alipay/sofa-bolt-node/commit/ee7086647759d2ab6532f8f54ae331cb2ee6c2f2)] - feat: optimise simple map encoder (#5) (killa <<killa123@126.com>>)
+
 1.0.2 / 2018-07-30
 ==================
 

@@ -1,6 +1,6 @@
 {
   "name": "sofa-bolt-node",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "bolt protocol nodejs implementation",
   "main": "lib/index.js",
   "files": [
