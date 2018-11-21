@@ -119,6 +119,11 @@ describe('test/utils.test.js', () => {
       isArray: true,
       arrayDepth: 2,
     }) === '[[Ljava.lang.String;');
+    assert(utils.getJavaClassname({
+      $class: 'byte',
+      $: Buffer.from('A'),
+      isArray: true,
+    }) === '[B');
   });
 
   it('should flatCopyTo ok', () => {
