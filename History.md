@@ -1,4 +1,10 @@
 
+1.1.1 / 2018-11-21
+==================
+
+**fixes**
+  * [[`40c9467`](http://github.com/alipay/sofa-bolt-node/commit/40c9467d8f6cc0e0485225832874ca50e9d39f03)] - fix: fix byte array class name (#6) (killa <<killa123@126.com>>)
+
 1.1.0 / 2018-11-07
 ==================
 
