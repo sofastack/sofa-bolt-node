@@ -54,7 +54,7 @@ describe('test/utils.test.js', () => {
     assert(utils.getJavaClassname(1.2) === 'double');
 
     assert(utils.getJavaClassname(new Date()) === 'java.util.Date');
-    assert(utils.getJavaClassname(new Buffer([ 1, 2, 3, 4 ])) === '[B');
+    assert(utils.getJavaClassname(Buffer.from([ 1, 2, 3, 4 ])) === '[B');
     assert(utils.getJavaClassname([ 1, 2, 3, 4 ]) === 'java.util.ArrayList');
     assert(utils.getJavaClassname(new Error('mock error')) === 'java.lang.RuntimeException');
     assert(utils.getJavaClassname({}) === 'java.util.HashMap');

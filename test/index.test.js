@@ -5,6 +5,8 @@ const assert = require('assert');
 const awaitEvent = require('await-event');
 const PassThrough = require('stream').PassThrough;
 const classMap = require('./fixtures/class_map');
+const urlparse = require('url').parse;
+const { registerAppClazzMap, BaseRpcCmd, codec: codecMap } = require('..');
 
 describe('test/index.test.js', () => {
   const obj = {
@@ -14,21 +16,21 @@ describe('test/index.test.js', () => {
     testObj2: { name: 'xxx', finalField: 'xxx' },
     testEnum: { name: 'B' },
     testEnum2: [{ name: 'B' }, { name: 'C' }],
-    bs: new Buffer([ 0x02, 0x00, 0x01, 0x07 ]),
+    bs: Buffer.from([ 0x02, 0x00, 0x01, 0x07 ]),
     list1: [{ name: 'A' }, { name: 'B' }],
     list2: [ 2017, 2016 ],
     list3: [{ name: 'aaa', finalField: 'xxx' },
       { name: 'bbb', finalField: 'xxx' },
     ],
     list4: [ 'xxx', 'yyy' ],
-    list5: [ new Buffer([ 0x02, 0x00, 0x01, 0x07 ]), new Buffer([ 0x02, 0x00, 0x01, 0x06 ]) ],
+    list5: [ Buffer.from([ 0x02, 0x00, 0x01, 0x07 ]), Buffer.from([ 0x02, 0x00, 0x01, 0x06 ]) ],
     map1: { 2017: { name: 'B' } },
     map2: {
       2107: 2106,
     },
     map3: {},
     map4: { xxx: 'yyy' },
-    map5: { 2017: new Buffer([ 0x02, 0x00, 0x01, 0x06 ]) },
+    map5: { 2017: Buffer.from([ 0x02, 0x00, 0x01, 0x06 ]) },
   };
 
   [
@@ -121,6 +123,62 @@ describe('test/index.test.js', () => {
 
         assert(size1 === size2);
       });
+    });
+  });
+
+  describe('registerAppClazzMap', () => {
+    it('should success', async () => {
+      registerAppClazzMap({
+        'com.alipay.foo': {
+          hello: {
+            type: 'java.lang.String',
+          },
+        },
+      });
+      const options = {
+        sentReqs: new Map(),
+        classMap,
+        address: urlparse('tr://foo.net:12200?_SERIALIZETYPE=hessian2', true),
+      };
+
+      const encoder = protocol.encoder(options);
+      const decoder = protocol.decoder(options);
+      const socket = new PassThrough();
+      encoder.pipe(socket).pipe(decoder);
+      encoder.protocolType = 'bolt2';
+      encoder.codecType = 'hessian2';
+      encoder.boltVersion = 2;
+      encoder.sofaVersion = '4.0';
+      encoder.crcEnable = true;
+
+      class FooClass extends BaseRpcCmd {
+        serializeHeader() {}
+
+        serializeContent(byteBuffer) {
+          const codec = codecMap[this.codecType];
+          codec.encode(byteBuffer, this);
+        }
+
+        get className() {
+          return 'com.alipay.foo';
+        }
+
+        get timeout() {
+          return this.obj.timeout || 3000;
+        }
+      }
+
+      const obj = new FooClass({
+        hello: 'world',
+      });
+
+      const p = awaitEvent(decoder, 'request');
+      encoder.writeRequest(1, obj, err => {
+        assert(!err);
+      });
+      const req = await p;
+      assert(req.className, 'com.alipay.foo');
+      assert.deepStrictEqual(req.data, { hello: 'world' });
     });
   });
 });

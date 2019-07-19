@@ -6,13 +6,13 @@ const SimpleMapSerializer = require('../lib/simple_map_serializer');
 describe('test/simple_map_serializer.test.js', () => {
   it('should encode ok', () => {
     let buf = SimpleMapSerializer.encode({ foo: 'bar' });
-    assert.deepEqual(buf, new Buffer('AAAAA2ZvbwAAAANiYXI=', 'base64'));
+    assert.deepEqual(buf, Buffer.from('AAAAA2ZvbwAAAANiYXI=', 'base64'));
     buf = SimpleMapSerializer.encode({ a: 'a', b: 'b', c: 'c' });
-    assert.deepEqual(buf, new Buffer('AAAAAWEAAAABYQAAAAFiAAAAAWIAAAABYwAAAAFj', 'base64'));
+    assert.deepEqual(buf, Buffer.from('AAAAAWEAAAABYQAAAAFiAAAAAWIAAAABYwAAAAFj', 'base64'));
     buf = SimpleMapSerializer.encode({ '': '123' });
-    assert.deepEqual(buf, new Buffer('AAAAAAAAAAMxMjM=', 'base64'));
+    assert.deepEqual(buf, Buffer.from('AAAAAAAAAAMxMjM=', 'base64'));
     buf = SimpleMapSerializer.encode({ 123: '' });
-    assert.deepEqual(buf, new Buffer('AAAAAzEyMwAAAAA=', 'base64'));
+    assert.deepEqual(buf, Buffer.from('AAAAAzEyMwAAAAA=', 'base64'));
   });
 
   it('should decode ok', () => {
@@ -32,7 +32,7 @@ describe('test/simple_map_serializer.test.js', () => {
     assert.deepEqual(SimpleMapSerializer.decode(buf), map);
 
     assert(SimpleMapSerializer.decode(null) === null);
-    assert(SimpleMapSerializer.decode(new Buffer(0)) === null);
+    assert(SimpleMapSerializer.decode(Buffer.alloc(0)) === null);
   });
 
   it('should decode null ok', () => {

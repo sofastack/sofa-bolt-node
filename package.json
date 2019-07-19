@@ -33,9 +33,11 @@
   "homepage": "https://github.com/alipay/sofa-bolt-node#readme",
   "dependencies": {
     "byte": "^2.0.0",
+    "connection": "^1.0.0",
     "crc": "^3.8.0",
     "hessian.js-1": "^1.8.3",
     "is-type-of": "^1.2.0",
+    "sdk-base": "^3.6.0",
     "sofa-hessian-node": "^1.0.1",
     "utility": "^1.14.0"
   },
