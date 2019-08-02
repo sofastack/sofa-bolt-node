@@ -7,6 +7,7 @@ option java_outer_classname = "ProtoServiceModels"; // 可选
 
 service ProtoService {
     rpc echoObj (EchoRequest) returns (EchoResponse) {}
+    rpc incr (IncrRequest) returns (EchoResponse) {}
 }
 
 message EchoRequest {
@@ -22,4 +23,8 @@ message EchoResponse {
 enum Group {
     A = 0;
     B = 1;
+}
+
+message IncrRequest {
+  int32 count = 1;
 }
