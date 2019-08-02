@@ -1,4 +1,10 @@
 
+1.2.0 / 2019-08-02
+==================
+
+**features**
+  * [[`450d0b9`](http://github.com/alipay/sofa-bolt-node/commit/450d0b987685f7ac10c2efae35f7063a0cf7652f)] - feat: impl RpcClient (#8) (killa <<killa123@126.com>>)
+
 1.1.1 / 2018-11-21
 ==================
 
