@@ -1,4 +1,10 @@
 
+1.2.1 / 2019-12-24
+==================
+
+**fixes**
+  * [[`bc3bba5`](http://github.com/sofastack/sofa-bolt-node/commit/bc3bba52431f5e6774f03c0f5e58650f48c0990c)] - fix: protocol decode should use class cache (#10) (killa <<killa123@126.com>>)
+
 1.2.0 / 2019-08-02
 ==================
 
