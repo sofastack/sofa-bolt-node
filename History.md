@@ -1,4 +1,10 @@
 
+2.0.0 / 2020-06-24
+==================
+
+**features**
+  * [[`21de7ec`](http://github.com/alipay/sofa-bolt-node/commit/21de7ec42ef51968fed9a1c7e3665dd121422b94)] - feat: support hessian4 (#11) (zōng yǔ <<gxcsoccer@users.noreply.github.com>>)
+
 1.2.1 / 2019-12-24
 ==================
 
