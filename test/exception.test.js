@@ -2,7 +2,7 @@
 
 const assert = require('assert');
 const ByteBuffer = require('byte');
-const hessianV2 = require('../lib/codec/hessian/v2');
+const hessianV2 = require('../lib/codec/hessian');
 
 describe('test/exception.test.js', () => {
   it('should decode java Exception ok', () => {
