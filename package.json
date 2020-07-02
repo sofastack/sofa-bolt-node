@@ -37,7 +37,7 @@
     "crc": "^3.8.0",
     "is-type-of": "^1.2.1",
     "sdk-base": "^3.6.0",
-    "sofa-hessian-node": "^2.0.0",
+    "sofa-hessian-node": "^2.1.0",
     "utility": "^1.16.3"
   },
   "devDependencies": {
@@ -48,7 +48,7 @@
     "contributors": "^0.5.1",
     "egg-bin": "^4.14.1",
     "egg-ci": "^1.15.0",
-    "eslint": "^7.2.0",
+    "eslint": "^7.3.1",
     "eslint-config-egg": "^8.0.1",
     "js-to-java": "^2.5.0",
     "long": "^4.0.0",
