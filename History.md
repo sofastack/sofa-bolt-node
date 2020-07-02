@@ -1,4 +1,10 @@
 
+2.0.1 / 2020-07-02
+==================
+
+**fixes**
+  * [[`4639e65`](http://github.com/alipay/sofa-bolt-node/commit/4639e65021315b2d8625897df44b25607586eb4c)] - fix: encode bytebuffer should reset everytime (#12) (zōng yǔ <<gxcsoccer@users.noreply.github.com>>)
+
 2.0.0 / 2020-06-24
 ==================
 
