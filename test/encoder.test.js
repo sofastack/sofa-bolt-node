@@ -184,6 +184,63 @@ describe('test/encoder.test.js', () => {
         assert(res.meta.rt >= 0);
       });
 
+      it('should handle encode error', async function() {
+        const sentReqs = new Map();
+        const socket = new PassThrough();
+        const encoder = protocol.encoder({ sentReqs, address });
+        const decoder = protocol.decoder({ sentReqs });
+        encoder.pipe(socket).pipe(decoder);
+
+        await assert.rejects(async () => {
+          await new Promise((resolve, reject) => {
+            encoder.writeRequest(1, {
+              args: [{
+                $class: 'java.lang.String',
+                $: false,
+              }],
+              serverSignature: 'com.alipay.test.TestService:1.0',
+              methodName: 'test',
+              requestProps: null,
+              timeout: 3000,
+            }, (err, packet) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(packet);
+              }
+            });
+          });
+        }, {
+          name: 'TypeError',
+          message: 'hessian writeString expect input type is `string`, but got `boolean` : false ',
+        });
+
+        setImmediate(() => {
+          encoder.writeRequest(2, {
+            args: [{
+              $class: 'java.lang.String',
+              $: 'hello',
+            }],
+            serverSignature: 'com.alipay.test.TestService:1.0',
+            methodName: 'test',
+            requestProps: null,
+            timeout: 3000,
+          });
+        });
+
+        const req = await awaitEvent(decoder, 'request');
+        assert(req.packetId === 2);
+        assert(req.packetType === 'request');
+        assert(req.className === 'com.alipay.sofa.rpc.core.request.SofaRequest');
+        assert(req.data && req.data.methodName === 'test');
+        assert(req.data.serverSignature === 'com.alipay.test.TestService:1.0');
+        assert.deepEqual(req.data.args, [ 'hello' ]);
+        assert(req.meta);
+        assert(req.meta.size > 0);
+        assert(req.meta.start > 0);
+        assert(req.meta.rt >= 0);
+      });
+
       it('should encode error response', async function() {
         const sentReqs = new Map();
         const socket = new PassThrough();
